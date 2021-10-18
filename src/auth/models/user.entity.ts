@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Item } from "src/item/models/item.entity";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Role } from "./role.enum";
 
 @Entity('user')
@@ -9,7 +10,7 @@ export class User extends BaseEntity {
     @Column({ unique: true })
     email: string;
 
-    @Column({ select: false })
+    @Column()
     password: string;
 
     @Column()
@@ -20,6 +21,9 @@ export class User extends BaseEntity {
 
     @Column({ type: "enum", enum: Role, default: Role.USER })
     role: Role;
+
+    @OneToMany(type => Item, item => item.author, { eager: false })
+    items: Item[]
 
 
 }

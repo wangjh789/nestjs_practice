@@ -9,7 +9,7 @@ async function bootstrap() {
 
   const serverConfig = config.get('server')
   const port = serverConfig.port
-
+  
   app.setGlobalPrefix('api') // npm run start:dev
   await app.listen(port); // http://1.247.55.89:33000/api
 
