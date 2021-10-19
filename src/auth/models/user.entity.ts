@@ -22,6 +22,8 @@ export class User extends BaseEntity {
     @Column({ type: "enum", enum: Role, default: Role.USER })
     role: Role;
 
+
+
     @OneToMany(type => Item, item => item.author, { eager: false })
     items: Item[]
 

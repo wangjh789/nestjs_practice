@@ -22,9 +22,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     }
 
     async validate(payload): Promise<User> { //인증이 된후 payload로 
+        // AuthGard() 시 사용 됨
         const { email } = payload;
         const user: User = await this.userRepository.findOne({ email })
-
         if (!user) {
             throw new UnauthorizedException();
         }

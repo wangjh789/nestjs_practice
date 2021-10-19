@@ -20,6 +20,6 @@ export class Item extends BaseEntity {
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     createdAt: Date;
 
-    @ManyToOne(type => User, user => user.items, { eager: false })
+    @ManyToOne(type => User, user => user.items, { eager: true })
     author: User;
 }
